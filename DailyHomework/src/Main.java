@@ -1,41 +1,58 @@
 import java.util.Scanner;
-public class Main {
-
-	public static void main(String[] args) {
-		String s;
-		Scanner scan = new Scanner(System.in);
-		s = scan.nextLine();
-		char[] ch = s.toCharArray();
-		int a = 0,b = 0;
-		int flag = 1;
-		for(int i = 0;i < ch.length;i++) {
-			if(ch[i] == ':') {
-				flag = 0;
-				continue;
+class circle{
+	public circle(double a){radius = a;}
+	public double radius = 0;
+	double getaera(){
+		return radius*radius*3.1415926535;
+	}
+}
+class rectangle{
+	public rectangle(double a,double b) {
+		wight = a;
+		height = b;
+	}
+	public double wight = 0;
+	public double height = 0;
+	double getaera(){
+		return wight*height;
+	} 
+}
+public class Main { 
+	public static void main(String args[]) {
+		String a;
+		java.text.DecimalFormat df = new java.text.DecimalFormat("#.00");
+		Scanner cin =new Scanner(System.in);
+		while(cin.hasNext()) {
+			a = cin.next();
+			char check = a.charAt(0);
+			if(check == 'c')
+			{
+				
+				double rr;
+				rr = cin.nextDouble();
+				circle r1 = new circle(rr);
+				double s = r1.getaera();
+				String s1 = df.format(s);
+				System.out.println(s1);
 			}
 			else {
-				if(flag==1) {
-					a = a*10+(ch[i]-48);
-				}
-				else {
-					b = b*10+(ch[i]-48);
-				}
+				double w,h;
+				w = cin.nextDouble();
+				h = cin.nextDouble();
+				rectangle z = new rectangle(w,h);
+				double s = z.getaera();
+				String s1 = df.format(s);
+				System.out.println(s1);
 			}
 		}
-		String ans;
-		if(a<12||a == 24) {
-			ans = "AM";
-			if(a == 24) a = 0;
-		}
-		else{
-			ans = "PM";
-			if(a > 12) {
-				a-=12;
-			}
-		}
-		System.out.print(a);
-		System.out.print(":");
-		System.out.println(b+" "+ans);
+		
 	}
-
 }
+	
+
+
+
+
+	
+
+
